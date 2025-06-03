@@ -1,0 +1,25 @@
+name: gai-cti-front-{$USER}
+
+include:
+  - ../../docker-compose.common.yml
+  - ../../elastdocker/docker-compose.yml
+  - ../../opencti/docker-compose.yml
+
+services:
+
+  back:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+
+  front:
+    image: mcr.microsoft.com/devcontainers/typescript-node:1.1.8-22-bookworm
+    command: sleep infinity
+    environment:
+      - VITE_API_ROOT=http://localhost:8088
+      - VITE_KIBANA_API_ROOT=http://localhost:5601/kibana/api
+      - VITE_ELASTIC_API_ROOT=http://localhost:9200
+      - VITE_SOCKET_IO_ROOT=http://localhost:8088
+    volumes:
+      - ../..:/workspaces:cached
+      - ~/.ssh:/home/node/.ssh

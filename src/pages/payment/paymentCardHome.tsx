@@ -23,8 +23,8 @@ const homeComponent = () => {
   const [totalBalance, setTotalBalance] = useState(0);
 
   const [data, setData] = useState([
-    { name: 'باقیمانده', value: 0, color: '#3b82f6' },
-    { name: 'برداشت‌ها', value: 0, color: '#E91E63' }
+    { name: 'باقیمانده', value: 0, color: 'bg-primary' },
+    { name: 'برداشت‌ها', value: 0, color: 'bg-primary-dark' }
   ]);
 
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
@@ -53,7 +53,7 @@ const homeComponent = () => {
     if (percentage === '0') return null;
 
     return (
-      <text x={x} y={y} textAnchor="middle" dominantBaseline="middle" className="text-sm light:fill-black dark:fill-white">
+      <text x={x} y={y} textAnchor="middle" dominantBaseline="middle" className="text-sm fill-text">
         {percentage}%
       </text>
     );
@@ -109,13 +109,13 @@ const homeComponent = () => {
 
   useEffect(() => {
     setData([
-      { name: 'موجودی', value: totalBalance, color: '#3b82f6' },
-      { name: 'برداشت‌ها', value: totalWithdraw, color: '#E91E63' }
+      { name: 'موجودی', value: totalBalance, color: 'bg-primary' },
+      { name: 'برداشت‌ها', value: totalWithdraw, color: 'bg-primary-dark' }
     ]);
   }, [totalBalance, totalWithdraw]);
 
   return (
-    <main className="min-h-screen p-8 light:bg-neutral-300 dark:bg-neutral-900">
+    <main className="min-h-screen p-8">
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {/* Charges Box */}
@@ -123,14 +123,14 @@ const homeComponent = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="rounded-xl border p-6 shadow-lg light:border-neutral-300 light:bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-800"
+            className="rounded-xl border p-6 border-background-alt dark:border-dark-background-alt dark:bg-dark-background-alt"
           >
-            <h2 className="mb-2 text-right text-sm font-medium light:text-neutral-400 dark:text-neutral-400">کل شارژ ها</h2>
+            <h2 className="mb-2 text-right text-sm font-medium text-text dark:text-dark-text">کل شارژ ها</h2>
 
             {loading ? (
-              <Skeleton classNames={{ base: 'dark:bg-neutral-700 light:bg-neutral-300' }} className="h-10 w-full rounded-lg" />
+              <Skeleton classNames={{ base: 'dark:bg-background-alt' }} className="h-10 w-full rounded-lg" />
             ) : (
-              <p className="flex justify-end gap-x-2 text-right text-3xl font-bold light:text-black dark:text-white">
+              <p className="flex justify-end gap-x-2 text-right text-3xl font-bold text-black dark:text-white">
                 <TbCurrencyIranianRial /> {formatNumber(totalCharge)}
               </p>
             )}
@@ -141,11 +141,11 @@ const homeComponent = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-xl border p-6 shadow-lg light:border-neutral-300 light:bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-800"
+            className="rounded-xl border p-6 border-background-alt dark:border-dark-background-alt dark:bg-dark-background-alt"
           >
-            <h2 className="mb-2 text-right text-sm font-medium light:text-neutral-900 dark:text-neutral-400">کل برداشت ها</h2>
+            <h2 className="mb-2 text-right text-sm font-medium text-text dark:text-dark-text">کل برداشت ها</h2>
             {loading ? (
-              <Skeleton classNames={{ base: 'dark:bg-neutral-700 light:bg-neutral-300' }} className="h-10 w-full rounded-lg" />
+              <Skeleton classNames={{ base: 'dark:bg-background-alt' }} className="h-10 w-full rounded-lg" />
             ) : (
               <p className="flex justify-end gap-x-2 text-right text-3xl font-bold light:text-black dark:text-white">
                 <TbCurrencyIranianRial /> {formatNumber(totalWithdraw)}
@@ -158,11 +158,11 @@ const homeComponent = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-xl border p-6 shadow-lg light:border-neutral-300 light:bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-800"
+            className="rounded-xl border p-6 border-background-alt dark:border-dark-background-alt dark:bg-dark-background-alt"
           >
-            <h2 className="mb-2 text-right text-sm font-medium light:text-neutral-400 dark:text-neutral-400">جمع موجودی</h2>
+            <h2 className="mb-2 text-right text-sm font-medium text-text dark:text-dark-text">جمع موجودی</h2>
             {loading ? (
-              <Skeleton classNames={{ base: 'dark:bg-neutral-700 light:bg-neutral-300' }} className="h-11 w-full rounded-lg" />
+              <Skeleton classNames={{ base: 'dark:bg-background-alt' }} className="h-10 w-full rounded-lg" />
             ) : (
               <p className="flex justify-end gap-x-2 text-right text-3xl font-bold light:text-black dark:text-white">
                 <TbCurrencyIranianRial /> {formatNumber(totalBalance)}
@@ -176,7 +176,7 @@ const homeComponent = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="rounded-xl border p-6 shadow-lg light:border-neutral-300 light:bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-800"
+          className="rounded-xl border p-6 border-background-alt dark:border-dark-background-alt dark:bg-dark-background-alt"
         >
           <h2 className="mb-6 text-right text-lg font-medium light:text-neutral-400 dark:text-neutral-400">گزارش‌های برداشت</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -185,17 +185,17 @@ const homeComponent = () => {
               <motion.div
                 whileTap={{ scale: 0.98 }}
                 whileHover={{ scale: 1.02 }}
-                className="flex h-full flex-col rounded-xl border p-6 shadow-lg transition-all duration-300 group-hover:border-blue-500 light:border-neutral-300 light:bg-neutral-300 light:group-hover:bg-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:group-hover:bg-neutral-800"
+                className="flex h-full flex-col rounded-xl border p-6 shadow-lg transition-all duration-300 group-hover:border-primary border-background-alt group-hover:bg-surface dark:border-dark-surface dark:bg-dark-background-alt dark:group-hover:bg-primary dark:group-hover:bg-opacity-5"
               >
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/20 text-blue-500">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary bg-opacity-20 text-primary">
                     <FiUsers size={24} />
                   </div>
-                  <h3 className="mb-2 text-right text-xl font-bold light:text-black dark:text-white">گزارش برداشت مشتریان</h3>
+                  <h3 className="mb-2 text-right text-xl font-bold text-black dark:text-dark-text">گزارش برداشت مشتریان</h3>
                 </div>
-                <p className="mb-4 text-right text-sm text-neutral-400">مشاهده جزئیات برداشت‌های مشتریان</p>
+                <p className="mb-4 text-right text-sm text-text">مشاهده جزئیات برداشت‌های مشتریان</p>
                 <div className="mt-auto flex justify-end">
-                  <span className="text-sm font-medium text-blue-400 transition-colors group-hover:text-blue-300">مشاهده گزارش →</span>
+                  <span className="text-sm font-medium text-primary">مشاهده گزارش →</span>
                 </div>
               </motion.div>
             </Link>
@@ -205,17 +205,17 @@ const homeComponent = () => {
               <motion.div
                 whileTap={{ scale: 0.98 }}
                 whileHover={{ scale: 1.02 }}
-                className="flex h-full flex-col rounded-xl border p-6 shadow-lg transition-all duration-300 group-hover:border-purple-500 light:border-neutral-300 light:bg-neutral-300 light:group-hover:bg-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:group-hover:bg-neutral-800"
+                className="flex h-full flex-col rounded-xl border p-6 shadow-lg transition-all duration-300 group-hover:border-dark-accent border-background-alt group-hover:bg-dark-accent dark:border-dark-surface dark:bg-dark-background-alt dark:group-hover:bg-dark-accent group-hover:bg-opacity-20 dark:group-hover:bg-opacity-5"
               >
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20 text-purple-500">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-dark bg-opacity-20 text-primary-dark">
                     <FiShoppingBag size={24} />
                   </div>
-                  <h3 className="mb-2 text-right text-xl font-bold light:text-black dark:text-white">گزارش برداشت سازمان‌های فروشگاهی</h3>
+                  <h3 className="mb-2 text-right text-xl font-bold text-text dark:text-dark-text">گزارش برداشت سازمان‌های فروشگاهی</h3>
                 </div>
-                <p className="mb-4 text-right text-sm text-neutral-400">مشاهده جزئیات برداشت‌های سازمان‌ها و فروشگاه ها</p>
+                <p className="mb-4 text-right text-sm text-text">مشاهده جزئیات برداشت‌های سازمان‌ها و فروشگاه ها</p>
                 <div className="mt-auto flex justify-end">
-                  <span className="text-sm font-medium text-purple-400 transition-colors group-hover:text-purple-300">مشاهده گزارش →</span>
+                  <span className="text-sm font-medium text-primary-dark">مشاهده گزارش →</span>
                 </div>
               </motion.div>
             </Link>
@@ -227,17 +227,17 @@ const homeComponent = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="rounded-xl border p-6 shadow-lg light:border-neutral-300 light:bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-800"
+            className="rounded-xl border p-6 border-background-alt dark:border-dark-background-alt dark:bg-dark-background-alt"
         >
           {/* Date Filter */}
           <div dir="rtl" className="mb-8 flex items-center justify-between">
-            <h2 className="text-right text-lg font-medium light:text-neutral-400 dark:text-neutral-400">خلاصه گزارش</h2>
+            <h2 className="text-right text-lg font-medium text-text">خلاصه گزارش</h2>
             <div className="flex items-center gap-4">
               {(dateRange[0] || dateRange[1]) && (
                 <Button
                   isIconOnly
                   onPress={clearDateRange}
-                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors light:bg-neutral-300 light:text-black light:hover:bg-neutral-600 dark:bg-neutral-700 dark:text-white dark:hover:bg-neutral-600"
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors bg-surface text-text hover:bg-background-alt dark:bg-dark-background dark:text-dark-text dark:hover:bg-dark-surface"
                 >
                   <FiX size={20} />
                 </Button>
@@ -261,7 +261,7 @@ const homeComponent = () => {
                 calendar={persian}
                 locale={persian_fa}
                 calendarPosition="bottom-left"
-                inputClass="w-full md:w-64 px-4 py-2 rounded-lg dark:bg-neutral-700 light:bg-neutral-300 dark:text-white light:text-black border dark:border-neutral-600 light:border-neutral-400 focus:border-blue-500 focus:outline-none transition-colors"
+                inputClass="w-full md:w-64 px-4 py-2 rounded-lg dark:bg-dark-background bg-surface text-text border dark:border-dark-surface border-background-alt focus:border-primary dark:focus:border-primary focus:outline-none transition-colors"
                 containerClassName="w-full"
                 placeholder="انتخاب بازه زمانی"
                 format="YYYY/MM/DD"
@@ -286,8 +286,8 @@ const homeComponent = () => {
             {data.map((entry, index) => (
               <div key={index} className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full" style={{ backgroundColor: entry.color }} />
-                  <span className="text-sm light:text-neutral-800 dark:text-neutral-400">{entry.name}</span>
+                  <div className={`h-3 w-3 rounded-full ${entry.color}`} />
+                  <span className="text-sm text-text">{entry.name}</span>
                 </div>
               </div>
             ))}

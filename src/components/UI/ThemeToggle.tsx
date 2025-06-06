@@ -10,13 +10,13 @@ const ThemeToggle = () => {
 
   // Don't render anything until after hydration to avoid hydration mismatch
   if (!mounted) {
-    return <div className="h-10 w-10 rounded-full bg-neutral-300 dark:bg-neutral-950" />;
+    return <div className="h-10 w-10 rounded-full" />;
   }
 
   return (
-    <motion.button
+    <motion.div
       onClick={toggleTheme}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full light:bg-neutral-300 dark:bg-neutral-950"
+      className="relative flex h-10 w-10 items-center justify-center rounded-full"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
@@ -44,7 +44,7 @@ const ThemeToggle = () => {
       >
         <IoMoon className="h-5 w-5 text-blue-400" />
       </motion.div>
-    </motion.button>
+    </motion.div>
   );
 };
 

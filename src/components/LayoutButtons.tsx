@@ -24,13 +24,6 @@ const LayoutButtons = ({ className }: { className?: string }) => {
   return (
     <>
       <LayoutGroup>
-        <section className="mt-10 h-[10%] select-none font-serif *:text-center *:font-josefin *:text-3xl *:font-bold *:text-[#E91E63]">
-          <Link className="cursor-pointer" to="/payment-card">
-            <AuroraText className="w-full text-center" colors={['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e']}>
-              BIST
-            </AuroraText>
-          </Link>
-        </section>
         <motion.section
           onMouseEnter={() => setInfoVisible(true)}
           onMouseLeave={() => setInfoVisible(false)}
@@ -245,7 +238,7 @@ const LayoutButtons = ({ className }: { className?: string }) => {
             )}
           </Link>
         </motion.section>
-
+{/* 
         <section className="flex h-[20%] flex-col items-center justify-center gap-1">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -296,7 +289,7 @@ const LayoutButtons = ({ className }: { className?: string }) => {
               <IoExitOutline className="light:text-black dark:text-white" size={50} />
             )}
           </div>
-        </section>
+        </section> */}
       </LayoutGroup>
     </>
   );

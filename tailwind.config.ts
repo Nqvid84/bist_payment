@@ -11,12 +11,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        1: '#06141B',
-        2: '#11212D',
-        3: '#253745',
-        4: '#4A5C6A',
-        5: '#9BA8AB',
-        6: '#CCD0CF'
+        primary: '#0197f6',
+        'primary-dark': '#9D4EDD',
+        background: '#FFFFFF',
+        'background-alt': '#CED4DA',
+        surface: '#F8F9FA',
+        text: '#  0B2545',
+        muted: '#134074',
+        accent: '#F8EBFF',
+        dark: {
+          background: '#121417',
+          'background-alt': '#090A0B',
+          accent: "#e0aaff",
+          surface: '#1C1F22',
+          text: '#E0FBFC',
+          muted: 'rgba(224, 251, 252, 0.6)',
+        },
       },
       animation: {
         aurora: 'aurora 60s linear infinite'
